@@ -111,10 +111,19 @@ Params size (MB): 527.79
 Estimated Total Size (MB): 746.96
 """
 
+# Download pizza, steak, sushi images from GitHub
 from download_data import *
 image_path = download_data(source="https://github.com/mrdbourke/pytorch-deep-learning/raw/main/data/pizza_steak_sushi.zip",
                            destination="pizza_steak_sushi")
 print(image_path)
+
+# Setup directory paths to train and test images
+train_dir = image_path / "train"
+test_dir = image_path / "test"
+
+
+
+
 # import download_data
 
 # img = Image.open('./cat.jpg')

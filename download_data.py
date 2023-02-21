@@ -3,9 +3,12 @@ import zipfile
 
 from pathlib import Path
 #This module offers classes representing filesystem paths with semantics appropriate for different operating systems
+# https://docs.python.org/3/library/pathlib.html
 
 
 import requests
+# Requests allows you to send HTTP/1.1 requests extremely easily. There’s no need to manually add query strings to your URLs, or to form-encode your PUT & POST data — but nowadays, just use the json method!
+# https://pypi.org/project/requests/
 
 def download_data(source: str, 
                   destination: str,
@@ -55,17 +58,3 @@ def download_data(source: str,
             os.remove(data_path / target_file)
     
     return image_path
-
-
-
-
-
-
-# Download pizza, steak, sushi images from GitHub
-
-
-
-
-image_path = download_data(source="https://github.com/mrdbourke/pytorch-deep-learning/raw/main/data/pizza_steak_sushi.zip",
-                           destination="pizza_steak_sushi")
-print(image_path)

@@ -1,16 +1,7 @@
-import torch
-import torch.nn.functional as F
-"""
-While the former defines nn.Module classes, the latter uses a functional (stateless) approach.
-To dig a bit deeper: nn.Modules are defined as Python classes and have attributes, e.g. a nn.Conv2d module will have some internal attributes like self.weight. F.conv2d however 
-just defines the operation and needs all arguments to be passed (including the weights and bias
-"""
-import matplotlib.pyplot as plt
+image_batch, label_batch = next(iter(train_dataloader))
 
-from torch import nn
-from torch import Tensor
-from PIL import Image
-from torchvision.transforms import Compose, Resize, ToTensor
-from einops import rearrange, reduce, repeat
-from einops.layers.torch import Rearrange, Reduce
-from torchsummary import summary
+# # Get a single image from the batch
+# image, label = image_batch[0], label_batch[0]
+
+# # View the batch shapes
+# print(image.shape, label)

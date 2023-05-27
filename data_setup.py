@@ -7,7 +7,8 @@ import os
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 
-NUM_WORKERS = os.cpu_count()
+# NUM_WORKERS = os.cpu_count()
+NUM_WORKERS = 1
 
 def create_dataloaders(
     train_dir: str, 
@@ -39,8 +40,14 @@ def create_dataloaders(
   # Use ImageFolder to create dataset(s)
   train_data = datasets.ImageFolder(train_dir, transform=transform)
   test_data = datasets.ImageFolder(test_dir, transform=transform)
+# ImageFolder A generic data loader where the images are arranged in this way by default:
 
+# root/dog/xxx.png
+# root/dog/xxy.png
+# root/dog/[...]/xxz.png
+  
   # Get class names
+
   class_names = train_data.classes
 
   # Turn images into data loaders
@@ -56,7 +63,7 @@ def create_dataloaders(
       batch_size=batch_size,
       shuffle=False,
       num_workers=num_workers,
-      pin_memory=True,
+      pin_memory=True, # avoids unnecessary copying of memory between the CPU and GPU memory by "pinning" examples that have been seen before
   )
 
   return train_dataloader, test_dataloader, class_names

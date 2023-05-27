@@ -113,16 +113,81 @@ Estimated Total Size (MB): 746.96
 
 # Download pizza, steak, sushi images from GitHub
 from download_data import *
-image_path = download_data(source="https://github.com/mrdbourke/pytorch-deep-learning/raw/main/data/pizza_steak_sushi.zip",
-                           destination="pizza_steak_sushi")
-print(image_path)
+################################### This part os for dlownloading the data. Once download is completed, comment it out #################
 
-# Setup directory paths to train and test images
-train_dir = image_path / "train"
-test_dir = image_path / "test"
+# image_path = download_data(source="https://github.com/mrdbourke/pytorch-deep-learning/raw/main/data/pizza_steak_sushi.zip",
+#                            destination="pizza_steak_sushi")
+# print(image_path)
+
+# # Setup directory paths to train and test images
+# train_dir = image_path / "train"
+# test_dir = image_path / "test"
+
+# Now we've got some data, let's now turn it into DataLoader's.
 
 
+from data_setup import *
 
+# Create image size (from Table 3 in the ViT paper) 
+IMG_SIZE = 224
+
+# Composes several transforms together. This transform does not support torchscript
+# Create transform pipeline manually
+manual_transforms = transforms.Compose([
+    transforms.Resize((IMG_SIZE, IMG_SIZE)),
+    transforms.ToTensor(),
+])           
+print(f"Manually created transforms: {manual_transforms}")
+
+# Set the batch size
+BATCH_SIZE = 10 # this is lower than the ViT paper but it's because we're starting small
+# image_path_new = r"S:code\data\pizza_steak_sushi"
+# train_dir_downloaded = image_path_new + "\train"
+# test_dir_downloaded = image_path_new + "\test"
+train_dir_downloaded = "data/pizza_steak_sushi/train"
+test_dir_downloaded = "data/pizza_steak_sushi/test"
+# Create data loaderscl
+train_dataloader, test_dataloader, class_names = create_dataloaders(
+    train_dir=train_dir_downloaded,
+    test_dir=train_dir_downloaded,
+    transform=manual_transforms, # use manually created transforms
+    batch_size=BATCH_SIZE
+)
+
+print(train_dataloader)
+if __name__ == '__main__':
+  # Get a batch of images
+  image_batch, label_batch = next(iter(train_dataloader))
+
+  # Get a single image from the batch
+  image, label = image_batch[0], label_batch[0]
+
+  # View the batch shapes
+  print(image.shape, label)
+
+  # for (image, label) in list(enumerate(train_dataloader))[:1]:
+  #   print(label)
+# train_dataloader, test_dataloader, class_names
+
+
+############################## Now Visualize #########################################
+# def main():
+# # Get a batch of images
+#   image_batch, label_batch = next(iter(train_dataloader))
+
+#   # Get a single image from the batch
+#   image, label = image_batch[0], label_batch[0]
+
+#   # View the batch shapes
+#   print(image.shape, label)
+
+# if __name__ == '__main__':
+#     main()
+
+
+# manual_transforms = transforms.Compose([
+    
+# ])
 
 # import download_data
 

@@ -172,41 +172,9 @@ if __name__ == '__main__':
   plt.axis(False)
   plt.show() # Add this line to actually see the plot
 
+
+  ################### Replication of ViT paper #######################################
+
 # So our model inputs are: images of pizza, steak and sushi.
 
 # And our ideal model outputs are: predicted labels of pizza, steak or sushi.
-
-
-
-
-
-  # for (image, label) in list(enumerate(train_dataloader))[:1]:
-  #   print(label)
-# train_dataloader, test_dataloader, class_names
-
-
-############################## Now Visualize #########################################
-# def main():
-# # Get a batch of images
-#   image_batch, label_batch = next(iter(train_dataloader))
-
-#   # Get a single image from the batch
-#   image, label = image_batch[0], label_batch[0]
-
-#   # View the batch shapes
-#   print(image.shape, label)
-
-# if __name__ == '__main__':
-#     main()
-
-
-# manual_transforms = transforms.Compose([
-    
-# ])
-
-# import download_data
-
-# img = Image.open('./cat.jpg')
-
-# fig = plt.figure()
-# plt.imshow(img)

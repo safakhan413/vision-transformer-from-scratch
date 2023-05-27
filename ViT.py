@@ -164,6 +164,21 @@ if __name__ == '__main__':
 
   # View the batch shapes
   print(image.shape, label)
+  # output torch.Size([3, 224, 224]) tensor(2). As can be seen color_channels is first dim of image tensor
+
+  # Plot image with matplotlib
+  plt.imshow(image.permute(1, 2, 0)) # rearrange image dimensions to suit matplotlib [color_channels, height, width] -> [height, width, color_channels]
+  plt.title(class_names[label])
+  plt.axis(False)
+  plt.show() # Add this line to actually see the plot
+
+# So our model inputs are: images of pizza, steak and sushi.
+
+# And our ideal model outputs are: predicted labels of pizza, steak or sushi.
+
+
+
+
 
   # for (image, label) in list(enumerate(train_dataloader))[:1]:
   #   print(label)

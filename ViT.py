@@ -172,7 +172,7 @@ if __name__ == '__main__':
   plt.axis(False)
   plt.show() # Add this line to actually see the plot
 
-
+  
   ################### Replication of ViT paper #######################################
 
 # So our model inputs are: images of pizza, steak and sushi.

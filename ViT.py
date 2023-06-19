@@ -172,7 +172,8 @@ if __name__ == '__main__':
   plt.axis(False)
   plt.show() # Add this line to actually see the plot
 
-  
+# In vector form embedding looks like: x_input = [class_token, image_patch_1, image_patch_2, image_patch_3...] + [class_token_position, image_patch_1_position, image_patch_2_position, image_patch_3_position...]
+
   ################### Replication of ViT paper #######################################
 
 # So our model inputs are: images of pizza, steak and sushi.
@@ -201,4 +202,5 @@ if __name__ == '__main__':
 #   (the "+" symbols) meaning the layer's inputs are fed directly to immediate layers as well as subsequent layers. The overall ViT architecture is
 #   comprised of a number of Transformer encoders stacked on top of eachother.
 
-# MLP Head - This is the output layer of the architecture, it converts the learned features of an input to a class output. Since we're working on image classification, you could also call this the "classifier head". The structure of the MLP Head is similar to the MLP block. 
+# MLP Head - This is the output layer of the architecture, it converts the learned features of an input to a class output. Since we're working on image classification, you could also call this the "classifier head". The structure of the MLP Head is similar to the MLP block.
+
